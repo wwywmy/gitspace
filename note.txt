@@ -1,2 +1,24 @@
 这是第一个git文件
 增加第二次提交
+vim 编辑软件操作例子
+command mode
+insert mode
+last line mode
+
+i command mode -> insert mode
+Esc insert mode -> command mode
+
+
+q quit vim
+w save file
+:wq save and quit
+:q quit
+:q! quit and not save
+
+
+0 or HOME move to head of row
+$ or END move to tail of row
+
+G move to end of file
+
+
