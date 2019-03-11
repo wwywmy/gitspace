@@ -21,4 +21,4 @@ $ or END move to tail of row
 
 G move to end of file
 
-
+linux add text
