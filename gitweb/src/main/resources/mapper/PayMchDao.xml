@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.abc.spring.mvc.dao.PayMchDao">
+ 
+ <select id="queryAll" resultType="PayMch">
+		SELECT
+			pay_mch_id,
+			mch_id,
+			name,
+			reqKey,
+			resKey
+		FROM
+			pay_mch
+		ORDER BY
+			pay_mch_id
+		LIMIT #{offset}, #{limit}
+	</select>
+ 
+ </mapper>   

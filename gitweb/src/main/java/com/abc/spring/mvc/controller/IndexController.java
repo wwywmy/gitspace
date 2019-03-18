@@ -1,4 +1,4 @@
-package com.abc.spring.mvc;
+package com.abc.spring.mvc.controller;
 
 import java.util.Date;
 
