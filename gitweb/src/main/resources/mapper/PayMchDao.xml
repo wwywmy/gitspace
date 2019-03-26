@@ -2,20 +2,33 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- <mapper namespace="com.abc.spring.mvc.dao.PayMchDao">
- 
- <select id="queryAll" resultType="PayMch">
+<mapper namespace="com.abc.spring.mvc.dao.PayMchDao">
+
+	<select id="queryAll" resultType="PayMch">
 		SELECT
-			pay_mch_id,
-			mch_id,
-			name,
-			reqKey,
-			resKey
+		pay_mch_id,
+		mch_id,
+		name,
+		reqKey,
+		resKey
 		FROM
-			pay_mch
+		pay_mch
 		ORDER BY
-			pay_mch_id
+		pay_mch_id
 		LIMIT #{offset}, #{limit}
 	</select>
- 
- </mapper>   
+	
+	<select id="queryById" resultType="PayMch" parameterType="java.lang.Integer">
+		SELECT
+		pay_mch_id,
+		mch_id,
+		name,
+		reqKey,
+		resKey
+		FROM
+		pay_mch
+		WHERE
+			pay_mch_id = #{id}
+	</select>
+
+</mapper>   

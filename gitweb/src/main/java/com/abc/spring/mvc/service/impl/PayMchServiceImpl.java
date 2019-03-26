@@ -24,5 +24,11 @@ public class PayMchServiceImpl implements PayMchService {
 		logger.info("com.abc.spring.mvc.dao.service.impl.PayMchServiceImpl.getList");
 		return payMchDao.queryAll(0, 1000);
 	}
+	
+	@Override
+	public PayMch getPayMchById(Integer id) {
+		logger.info("com.abc.spring.mvc.dao.service.impl.PayMchServiceImpl.getPayMchById");
+		return payMchDao.queryById(id);
+	}
 
 }

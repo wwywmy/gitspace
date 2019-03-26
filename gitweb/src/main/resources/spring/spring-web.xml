@@ -27,4 +27,6 @@
 		<property name="prefix" value="/WEB-INF/jsp/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
+	
+	<bean class="com.abc.spring.mvc.config.ApiConfig"></bean>
 </beans>

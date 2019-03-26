@@ -6,4 +6,6 @@ import com.abc.spring.mvc.entity.PayMch;
 
 public interface PayMchService {
 	List<PayMch> getList();
+
+	PayMch getPayMchById(Integer id);
 }
