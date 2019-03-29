@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.Transaction;
 
 @Api(tags = "REDIS")
 @Controller
@@ -51,6 +52,33 @@ public class RedisController {
 		
 		//jedis.disconnect();
 		
+		jedis.close();
+		
+		return buffer.toString();
+	}
+	
+	@ApiOperation(value = "redis transaction", httpMethod = "GET")
+	@RequestMapping(value = "/tx", method = RequestMethod.GET)
+	@ResponseBody
+	private Object tx() {
+
+		logger.info("com.abc.spring.mvc.RedisController.index ");
+		
+		Jedis jedis = new Jedis("192.168.9.129", 6379);
+		
+		StringBuffer buffer = new StringBuffer();
+		
+		
+		Transaction transaction  = jedis.multi();
+		
+		transaction.set("K10","v10");
+		transaction.set("K11","v11");
+		transaction.set("K12","v13");
+		transaction.set("K13","K13");
+		
+		//transaction.exec();
+		transaction.discard();
+
 		jedis.close();
 		
 		return buffer.toString();
