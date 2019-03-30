@@ -42,7 +42,4 @@
 		-->
 	</bean>
 	
-	<!-- 扫描com.abc.spring.redis.dao包下所有使用注解的类型 -->
-	<context:component-scan base-package="com.abc.spring.redis.dao" />
-	
 </beans>
