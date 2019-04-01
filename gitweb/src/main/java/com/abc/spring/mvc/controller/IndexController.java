@@ -21,19 +21,7 @@ public class IndexController {
 		return "springmvc";
 	}
 	
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	private String login() {
-		
-		
-		return "login";
-	}
 	
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	private String list() {
-		
-		
-		return "list";
-	}
 	
 	@RequestMapping(value = "/unauth", method = RequestMethod.GET)
 	private String unauth() {
@@ -41,6 +29,7 @@ public class IndexController {
 		
 		return "unauth";
 	}
+	
 	
 	
 }

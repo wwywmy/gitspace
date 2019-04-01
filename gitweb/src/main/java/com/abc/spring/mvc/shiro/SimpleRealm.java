@@ -21,7 +21,6 @@ public class SimpleRealm implements Realm {
 
 	@Override
 	public AuthenticationInfo getAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

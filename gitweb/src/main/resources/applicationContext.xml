@@ -7,7 +7,8 @@
 	<bean id="securityManager"
 		class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
 		<!-- <property name="cacheManager" ref="cacheManager" /> -->
-		<property name="realm" ref="simpleRealm" />
+		<!-- <property name="realm" ref="simpleRealm" /> -->
+		<property name="realm" ref="shiroRealm" />
 	</bean>
 
 
@@ -31,6 +32,13 @@
 	<bean id="simpleRealm"
 		class="com.abc.spring.mvc.shiro.SimpleRealm">
 	</bean>
+	<bean id="shiroRealm" class="com.abc.spring.mvc.shiro.ShiroRealm">
+		<property name="credentialsMatcher">
+			<bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+				<property name="hashAlgorithmName" value="MD5"></property>
+			</bean>
+		</property>
+	</bean>
 
 	<bean
 		class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
@@ -47,12 +55,13 @@
 	<bean id="shiroFilter"
 		class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<property name="securityManager" ref="securityManager" />
-		<property name="loginUrl" value="/login"/>
-        <property name="successUrl" value="/list"/>
-        <property name="unauthorizedUrl" value="/unauth"/>
+		<property name="loginUrl" value="/login" />
+		<property name="successUrl" value="/list" />
+		<property name="unauthorizedUrl" value="/unauth" />
 		<property name="filterChainDefinitions">
 			<value>
 				/login = anon
+				/logout = anon
 				/list = authc
 				/** = authc
 			</value>
