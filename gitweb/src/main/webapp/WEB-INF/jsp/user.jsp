@@ -3,18 +3,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>list</title>
+<title>user jsp</title>
 </head>
 <body>
-	<h2>List Page</h2>
-	
-	<div>
-		<a href="/user">user</a>
-	</div>
-	<div>
-		<a href="/admin">admin</a>
-	</div>
-	
-	<a href="/logout">logout</a>
+	<h2>user jsp</h2>
 </body>
 </html>

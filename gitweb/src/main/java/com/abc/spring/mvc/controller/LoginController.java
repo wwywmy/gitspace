@@ -72,9 +72,24 @@ public class LoginController {
 		return "list";
 	}
 	
+	@RequestMapping(value = "/user", method = RequestMethod.GET)
+	private String user() {
+		
+		
+		return "user";
+	}
+	
+	@RequestMapping(value = "/admin", method = RequestMethod.GET)
+	private String admin() {
+		
+		
+		return "admin";
+	}
+	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	private String logout() {
-		
+		Subject currentUser = SecurityUtils.getSubject();
+		currentUser.logout();
 		
 		return "redirect:/login";
 	}

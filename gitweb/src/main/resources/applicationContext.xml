@@ -39,7 +39,14 @@
 			</bean>
 		</property>
 	</bean>
-
+	<bean id="secondRealm" class="com.abc.spring.mvc.shiro.SecondRealm">
+		<property name="credentialsMatcher">
+			<bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+				<property name="hashAlgorithmName" value="SHA1"></property>
+			</bean>
+		</property>
+	</bean>
+	
 	<bean
 		class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
 		depends-on="lifecycleBeanPostProcessor" />
@@ -63,6 +70,10 @@
 				/login = anon
 				/logout = anon
 				/list = authc
+				
+				/user = roles[user]
+				/admin = roles[admin]
+				
 				/** = authc
 			</value>
 		</property>
