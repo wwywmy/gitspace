@@ -8,7 +8,8 @@
 		class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
 		<!-- <property name="cacheManager" ref="cacheManager" /> -->
 		<!-- <property name="realm" ref="simpleRealm" /> -->
-		<property name="realm" ref="shiroRealm" />
+		<!-- <property name="realm" ref="shiroRealm" /> -->
+		<property name="realm" ref="shiroAuthRealm" />
 	</bean>
 
 
@@ -47,6 +48,14 @@
 		</property>
 	</bean>
 	
+	<bean id="shiroAuthRealm" class="com.abc.spring.mvc.shiro.ShiroAuthRealm">
+		<property name="credentialsMatcher">
+			<bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+				<property name="hashAlgorithmName" value="MD5"></property>
+			</bean>
+		</property>
+	</bean>
+	
 	<bean
 		class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
 		depends-on="lifecycleBeanPostProcessor" />
@@ -65,6 +74,7 @@
 		<property name="loginUrl" value="/login" />
 		<property name="successUrl" value="/list" />
 		<property name="unauthorizedUrl" value="/unauth" />
+		<!--  
 		<property name="filterChainDefinitions">
 			<value>
 				/login = anon
@@ -77,5 +87,14 @@
 				/** = authc
 			</value>
 		</property>
+		-->
+		<property name="filterChainDefinitionMap" ref="filterChainDefinitionsMap"/> 
 	</bean>
+	
+	<bean id="filterChainDefinitionsMap" factory-bean="filterChainDefinitionsBuilder" factory-method="buildFilterChainDefinitions"/>
+	
+	<bean id="filterChainDefinitionsBuilder" class="com.abc.spring.mvc.shiro.factory.FilterChainDefinitionsBuilder" />
+	
+	<bean id="adminService" class="com.abc.spring.mvc.shiro.service.AdminService" />
+	
 </beans>

@@ -6,18 +6,25 @@ import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.abc.spring.mvc.shiro.service.AdminService;
+
 @Controller
 public class LoginController {
 
 	private static Logger logger = LoggerFactory.getLogger(LoginController.class);
+	
+	@Autowired
+	private AdminService adminService;
 	
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -84,6 +91,13 @@ public class LoginController {
 		
 		
 		return "admin";
+	}
+	
+	@RequestMapping(value = "/adminPortal", method = RequestMethod.GET)
+	private String adminPortal() {
+		adminService.toPortal();
+		
+		 return "redirect:/list";
 	}
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)

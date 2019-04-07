@@ -10,7 +10,7 @@
 	
 	<form action="/login" method="post">
 		<ul>
-			<li><label>username</label><input type="text" id="username" name="username" value="abc"/></li>
+			<li><label>username</label><input type="text" id="username" name="username" value="admin"/></li>
 			<li><label>password</label><input type="password" id="password" name="password" value="123456"/></li>
 		</ul>
 		<input type="submit" value="login"/>
